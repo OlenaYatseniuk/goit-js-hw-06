@@ -9,7 +9,6 @@ const btnCreate = input.nextElementSibling;
 const dtnDestroy = parentDiv.lastElementChild;
 const divBoxes = parentDiv.nextElementSibling;
 let valueInput = input.value;
-console.dir(valueInput);
 
 input.addEventListener("input", onInputChange);
 btnCreate.addEventListener("click", onBtnCreateClick);
