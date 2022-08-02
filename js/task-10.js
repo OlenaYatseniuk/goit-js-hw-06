@@ -8,7 +8,8 @@ const input = parentDiv.firstElementChild;
 const btnCreate = input.nextElementSibling;
 const dtnDestroy = parentDiv.lastElementChild;
 const divBoxes = parentDiv.nextElementSibling;
-let valueInput = 0;
+let valueInput = input.value;
+console.dir(valueInput);
 
 input.addEventListener("input", onInputChange);
 btnCreate.addEventListener("click", onBtnCreateClick);
@@ -24,8 +25,9 @@ function onBtnCreateClick() {
   divBoxes.insertAdjacentHTML("afterbegin", tagStr);
 }
 
-function destroyBoxes() {
+function destroyBoxes(event) {
   divBoxes.innerHTML = "";
+  input.value = "";
 }
 
 function createBoxes(amount) {
