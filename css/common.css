@@ -35,7 +35,12 @@ button {
 }
 .gallery__item {
   width: 480px;
+  margin-right: 15px;
 }
+.gallery__item:last-child {
+  margin-right: 0;
+}
+
 .gallery__img {
   display: block;
   max-width: 100%;

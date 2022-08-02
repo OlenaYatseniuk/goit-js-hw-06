@@ -6,9 +6,12 @@ input.addEventListener("focus", onInputFocus);
 
 function onInputChecked(event) {
   const value = event.target.value;
-  value.length >= neededLength
-    ? input.classList.add("valid")
-    : input.classList.add("invalid");
+  if (value.length === Number(neededLength)) {
+    input.classList.add("valid");
+  } else {
+    input.classList.add("invalid");
+    input.classList.remove("valid");
+  }
 }
 
 function onInputFocus(event) {

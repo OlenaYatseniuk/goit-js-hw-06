@@ -8,37 +8,36 @@ const input = parentDiv.firstElementChild;
 const btnCreate = input.nextElementSibling;
 const dtnDestroy = parentDiv.lastElementChild;
 const divBoxes = parentDiv.nextElementSibling;
-let valueInput = input.value;
+input.value = 1;
+let valueInput = 1;
+let lastIndex = 0;
 
 input.addEventListener("input", onInputChange);
 btnCreate.addEventListener("click", onBtnCreateClick);
 dtnDestroy.addEventListener("click", destroyBoxes);
 
 function onInputChange(event) {
-  valueInput = event.target.value;
+  valueInput = Number(event.target.value);
 }
 
 function onBtnCreateClick() {
   const tagStr = createBoxes(valueInput);
-  divBoxes.innerHTML = "";
-  divBoxes.insertAdjacentHTML("afterbegin", tagStr);
+  divBoxes.insertAdjacentHTML("beforeend", tagStr);
 }
 
 function destroyBoxes(event) {
   divBoxes.innerHTML = "";
-  input.value = "";
+  lastIndex = 0;
 }
 
 function createBoxes(amount) {
-  let divArray = [];
-  let width = 30;
-  for (let i = 0; i < amount; i += 1) {
-    divArray[
-      i
-    ] = `<div class ="box" style = 'background-color: ${getRandomHexColor()}; width: ${
+  let divStr = "";
+  for (let i = lastIndex; i < lastIndex + amount; i += 1) {
+    let width = 30 + i * 10;
+    divStr += `<div class ="box" style = 'background-color: ${getRandomHexColor()}; width: ${
       width + "px"
     }; height:${width + "px"}'>${i + 1}</div>`;
-    width += 10;
   }
-  return divArray.join("");
+  lastIndex += amount;
+  return divStr;
 }

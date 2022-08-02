@@ -18,6 +18,6 @@ const galleryItem = images
     ({ url, alt }) =>
       `<li class ="gallery__item"><img class ="gallery__img" src="${url}" alt ="${alt}"></li>`
   )
-  .join();
+  .join("");
 
 galleryList.insertAdjacentHTML("afterbegin", galleryItem);
